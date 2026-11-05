@@ -218,7 +218,6 @@ body {
   grid-template-columns: minmax(0, 1.35fr) minmax(280px, 0.9fr);
   gap: 0;
   min-height: 0;
-  border-bottom: 1px solid var(--line);
 }
 
 .catalog {
@@ -521,47 +520,6 @@ body {
   margin: 0.45rem 0 0;
   color: var(--muted);
   font-size: 0.78rem;
-}
-
-.log-drawer {
-  background: #12161d;
-  border-top: 1px solid var(--line);
-}
-
-.log-drawer-head {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-  align-items: baseline;
-  padding: 0.65rem 1.15rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.log-drawer-head h2 {
-  margin: 0;
-  font-family: var(--font-display);
-  font-size: 1rem;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-}
-
-.log-target {
-  margin: 0;
-  color: var(--muted);
-  font-size: 0.75rem;
-}
-
-.log-view {
-  margin: 0;
-  padding: 0.85rem 1.15rem 1.25rem;
-  min-height: 110px;
-  max-height: 180px;
-  overflow: auto;
-  color: #9eb0c2;
-  font-size: 0.76rem;
-  font-family: ui-monospace, SFMono-Regular, Menlo, monospace;
-  white-space: pre-wrap;
-  word-break: break-word;
 }
 
 .toast {

@@ -3,8 +3,6 @@ const platformLine = document.getElementById("platform-line");
 const catalogCount = document.getElementById("catalog-count");
 const detailEmpty = document.getElementById("detail-empty");
 const detailPanel = document.getElementById("detail-panel");
-const logView = document.getElementById("log-view");
-const logTarget = document.getElementById("log-target");
 const toastEl = document.getElementById("toast");
 const refreshBtn = document.getElementById("refresh-btn");
 const syncBtn = document.getElementById("sync-btn");
@@ -232,17 +230,6 @@ function renderList() {
   listEl.innerHTML = items.map(renderRow).join("");
   const selected = allPlugins.find((p) => p.id === selectedId) || null;
   renderDetail(selected);
-  logTarget.textContent = selected?.name || "—";
-}
-
-async function refreshLogs() {
-  if (!selectedId) {
-    logView.textContent = "Empty for now.";
-    return;
-  }
-  const { lines } = await api(`/api/plugins/${selectedId}/logs`);
-  logView.textContent = lines.length ? lines.join("\n") : "Empty for now.";
-  logView.scrollTop = logView.scrollHeight;
 }
 
 async function loadPlugins() {
@@ -258,7 +245,6 @@ async function loadPlugins() {
     : "not synced";
   platformLine.textContent = `${health.platform} · @${health.githubUser} · ${syncInfo}`;
   renderList();
-  await refreshLogs();
 }
 
 async function runAction(id, action) {
@@ -274,11 +260,9 @@ async function runAction(id, action) {
     }
   } catch (err) {
     toast(err.message);
-    await refreshLogs();
     throw err;
   } finally {
     await loadPlugins();
-    await refreshLogs();
   }
 }
 
@@ -318,7 +302,6 @@ listEl.addEventListener("click", (event) => {
   if (!row) return;
   selectedId = row.dataset.id;
   renderList();
-  refreshLogs().catch(() => {});
 });
 
 listEl.addEventListener("keydown", (event) => {
@@ -328,7 +311,6 @@ listEl.addEventListener("keydown", (event) => {
   event.preventDefault();
   selectedId = row.dataset.id;
   renderList();
-  refreshLogs().catch(() => {});
 });
 
 detailPanel.addEventListener("click", handleActionClick);
@@ -386,10 +368,6 @@ loadPlugins()
   .catch((err) => {
     listEl.innerHTML = `<div class="empty">Error: ${escapeHtml(err.message)}</div>`;
   });
-
-setInterval(() => {
-  refreshLogs().catch(() => {});
-}, 2000);
 
 // Pick up server auto-sync without pressing the button.
 setInterval(() => {
