@@ -14,7 +14,7 @@ Open: [http://127.0.0.1:4787](http://127.0.0.1:4787)
 
 ## Auto-sync
 
-On startup (and every 15 minutes by default) ProtonPad scans public repos of `githubUser` from `plugins/config.json` and loads any root `protonpad.json`.
+On startup (and every 15 minutes by default) ProtonPad scans public repos of `kavtunov` from `plugins/config.json` and loads any root `protonpad.json`.
 
 Manual **Sync GitHub** still works. Tune in `plugins/config.json`:
 
