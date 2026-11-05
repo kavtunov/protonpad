@@ -1,0 +1,17 @@
+{
+  "name": "protonpad",
+  "version": "0.1.0",
+  "private": true,
+  "description": "One-click hub for Proton / Linux gaming fixes",
+  "type": "module",
+  "scripts": {
+    "dev": "node --watch server/index.js",
+    "start": "node server/index.js"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "dependencies": {
+    "express": "^4.21.2"
+  }
+}

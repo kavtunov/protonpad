@@ -1,0 +1,9 @@
+{
+  "githubUser": "kavtunov",
+  "catalogFile": "protonpad.json",
+  "autoSync": {
+    "enabled": true,
+    "onStartup": true,
+    "intervalMinutes": 15
+  }
+}

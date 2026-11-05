@@ -1,0 +1,75 @@
+[
+  {
+    "id": "ac-dualsense",
+    "name": "DualSense → Assassin's Creed 1 & 2",
+    "game": "Assassin's Creed / AC2",
+    "platform": "Linux · Steam · Proton",
+    "hosts": ["linux"],
+    "summary": "Maps DualSense to a virtual Xbox 360 pad + EaglePatch. Fixes LB/RB/LT, camera sensitivity, and adds rumble.",
+    "repo": "https://github.com/kavtunov/ac1-2-dualsenseFix",
+    "repoDir": "ac1-2-dualsenseFix",
+    "launchOptions": "WINEDLLOVERRIDES=\"dinput8=n,b\" %command%",
+    "steamTip": "In game Properties → Controller → Disable Steam Input.",
+    "actions": {
+      "install": {
+        "label": "Install mod",
+        "cwd": ".",
+        "steps": [
+          { "cmd": "pip", "args": ["install", "-r", "requirements.txt"], "optional": true },
+          { "cmd": "bash", "args": ["./install_eaglepatch.sh"] }
+        ]
+      },
+      "start": {
+        "label": "Start mapper",
+        "cwd": ".",
+        "detached": true,
+        "cmd": "bash",
+        "args": ["./ac1-gamepad.sh"]
+      },
+      "settings": {
+        "label": "Settings",
+        "cwd": ".",
+        "detached": true,
+        "cmd": "bash",
+        "args": ["./ac1-settings.sh"]
+      }
+    },
+    "stoppable": true
+  },
+  {
+    "id": "split-fiction-swap-linux",
+    "name": "Split Fiction · Screen Swap (Linux)",
+    "game": "Split Fiction",
+    "platform": "Linux · Steam · Proton · UE4SS",
+    "hosts": ["linux"],
+    "summary": "Swaps split-screen sides Mio ↔ Zoe on Linux. Installs UE4SS and the mod into the game folder.",
+    "repo": "https://github.com/kavtunov/SplitFiction-ScreenSwap-Linux",
+    "repoDir": "SplitFiction-ScreenSwap-Linux",
+    "launchOptions": "WINEDLLOVERRIDES=\"dwmapi=n,b\" %command%",
+    "steamTip": "Use a recent Proton or Proton-GE. In-game: F8 — swap, F7 — dump to log.",
+    "actions": {
+      "install": {
+        "label": "Install mod",
+        "cwd": ".",
+        "steps": [
+          { "cmd": "bash", "args": ["./install-linux.sh"] }
+        ]
+      }
+    },
+    "stoppable": false
+  },
+  {
+    "id": "split-fiction-swap-windows",
+    "name": "Split Fiction · Screen Swap (Windows)",
+    "game": "Split Fiction",
+    "platform": "Windows · Steam / EA App · UE4SS",
+    "hosts": ["win32"],
+    "summary": "Same Screen Swap for Windows. Download the repo and place ScreenSwapMod under ue4ss\\Mods (see README).",
+    "repo": "https://github.com/kavtunov/SplitFiction-ScreenSwap-Windows",
+    "repoDir": "SplitFiction-ScreenSwap-Windows",
+    "launchOptions": "",
+    "steamTip": "Install UE4SS in Win64, copy Mods\\ScreenSwapMod, enable ScreenSwapMod : 1 in mods.txt. F8 — swap.",
+    "actions": {},
+    "stoppable": false
+  }
+]

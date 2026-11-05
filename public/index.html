@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>ProtonPad</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Public+Sans:wght@400;500;600;700&family=Saira+Condensed:wght@600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <div class="atmosphere" aria-hidden="true"></div>
+
+    <header class="shell-bar">
+      <div class="brand">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <div class="brand-text">
+          <p class="brand-name">ProtonPad</p>
+          <p class="brand-meta" id="platform-line">loading…</p>
+        </div>
+      </div>
+      <div class="shell-actions">
+        <button type="button" class="btn btn-ghost" id="refresh-btn">Refresh</button>
+        <button type="button" class="btn btn-primary" id="sync-btn">Sync GitHub</button>
+      </div>
+    </header>
+
+    <div class="filter-bar" role="group" aria-label="Filter by OS">
+      <button type="button" class="filter is-active" data-filter="all">All</button>
+      <button type="button" class="filter" data-filter="linux">Linux</button>
+      <button type="button" class="filter" data-filter="win32">Windows</button>
+    </div>
+
+    <main class="workspace">
+      <section class="catalog" aria-label="Mod catalog">
+        <div class="catalog-head">
+          <h1 class="catalog-title">Catalog</h1>
+          <p class="catalog-count" id="catalog-count">—</p>
+        </div>
+        <div id="plugin-list" class="row-list" aria-live="polite"></div>
+      </section>
+
+      <aside class="detail" aria-label="Mod details">
+        <div id="detail-empty" class="detail-empty">
+          <p>Select a mod from the list</p>
+        </div>
+        <div id="detail-panel" class="detail-panel" hidden></div>
+      </aside>
+    </main>
+
+    <section class="log-drawer" aria-label="Log">
+      <div class="log-drawer-head">
+        <h2>Log</h2>
+        <p id="log-target" class="log-target">—</p>
+      </div>
+      <pre id="log-view" class="log-view">Empty for now.</pre>
+    </section>
+
+    <div id="toast" class="toast" hidden></div>
+    <script type="module" src="/app.js"></script>
+  </body>
+</html>
